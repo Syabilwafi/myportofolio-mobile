@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class ItemHomepage {
   final String name;
   final IconData icon;
+  final Color color;
 
-  const ItemHomepage(this.name, this.icon);
+  const ItemHomepage(this.name, this.icon, this.color);
 }
 
 class MyHomePage extends StatelessWidget {
@@ -15,9 +16,9 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "PBP B";
 
   final List<ItemHomepage> items = const [
-    ItemHomepage("Lihat Portofolio", Icons.folder),
-    ItemHomepage("Tambah Project", Icons.add),
-    ItemHomepage("Logout", Icons.logout),
+    ItemHomepage("Lihat Proyek", Icons.folder, Colors.blue),
+    ItemHomepage("Tambah Proyek", Icons.add_circle, Colors.green),
+    ItemHomepage("Logout", Icons.logout, Colors.red),
   ];
 
   @override
@@ -31,7 +32,7 @@ class MyHomePage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Colors.green,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -117,7 +118,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Theme.of(context).colorScheme.secondary,
+      color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         onTap: () {
